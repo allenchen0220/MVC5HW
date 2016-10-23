@@ -15,10 +15,15 @@ namespace CRMWebApp.Controllers
         private 客戶資料Entities db = new 客戶資料Entities();
 
         // GET: 客戶聯絡人
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
+            //var 客戶聯絡人 = db.客戶聯絡人.Include(客 => 客.客戶資料);
+            //return View(客戶聯絡人.ToList());
+
             var 客戶聯絡人 = db.客戶聯絡人.Include(客 => 客.客戶資料);
-            return View(客戶聯絡人.ToList());
+            客戶聯絡人 = 客戶聯絡人.Where(p => p.姓名.Contains(search));
+
+            return View(客戶聯絡人.OrderByDescending(p =>p.姓名).Take(10));
         }
 
         // GET: 客戶聯絡人/Details/5

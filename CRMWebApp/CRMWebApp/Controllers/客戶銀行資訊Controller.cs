@@ -15,10 +15,14 @@ namespace CRMWebApp.Controllers
         private 客戶資料Entities db = new 客戶資料Entities();
 
         // GET: 客戶銀行資訊
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
+            //var 客戶銀行資訊 = db.客戶銀行資訊.Include(客 => 客.客戶資料);
+            //return View(客戶銀行資訊.ToList());
+
             var 客戶銀行資訊 = db.客戶銀行資訊.Include(客 => 客.客戶資料);
-            return View(客戶銀行資訊.ToList());
+            客戶銀行資訊 = 客戶銀行資訊.Where(p => p.客戶資料.客戶名稱.Contains(search));
+            return View(客戶銀行資訊.OrderByDescending(p =>p.客戶Id).Take(10));
         }
 
         // GET: 客戶銀行資訊/Details/5

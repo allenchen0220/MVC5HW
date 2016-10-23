@@ -14,10 +14,20 @@ namespace CRMWebApp.Controllers
     {
         private 客戶資料Entities db = new 客戶資料Entities();
 
-        // GET: 客戶資料
-        public ActionResult Index()
+         // GET: 客戶資料
+        public ActionResult Index(string search)
         {
-            return View(db.客戶資料.ToList());
+            //var data = db.客戶資料.Include(p => p.客戶名稱);
+
+            //if (!string.IsNullOrEmpty(search))
+            //{
+            //    data = db.客戶資料.Where(p => p.客戶名稱.Contains(search));
+            //}
+
+            var data = db.客戶資料.Where(p => p.客戶名稱.Contains(search));
+            data = data.OrderByDescending(p => p.客戶名稱).Take(10);
+
+            return View(data);
         }
 
         // GET: 客戶資料/Details/5
