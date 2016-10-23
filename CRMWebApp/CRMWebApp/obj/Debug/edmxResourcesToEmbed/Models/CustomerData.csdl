@@ -87,5 +87,14 @@
       <End Role="客戶資料" EntitySet="客戶資料" />
       <End Role="客戶聯絡人" EntitySet="客戶聯絡人" />
     </AssociationSet>
+    <EntitySet Name="vw_CustomerContactAndBankList" EntityType="客戶資料Model.vw_CustomerContactAndBankList" />
   </EntityContainer>
+  <EntityType Name="vw_CustomerContactAndBankList">
+    <Key>
+      <PropertyRef Name="客戶名稱" />
+    </Key>
+    <Property Name="客戶名稱" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="聯絡人數量" Type="Int32" />
+    <Property Name="銀行數戶數量" Type="Int32" />
+  </EntityType>
 </Schema>

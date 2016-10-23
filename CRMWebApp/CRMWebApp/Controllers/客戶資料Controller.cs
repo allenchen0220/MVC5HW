@@ -125,6 +125,13 @@ namespace CRMWebApp.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult 客戶明細()
+        {
+            var data = db.vw_CustomerContactAndBankList.OrderByDescending(p => p.客戶名稱).Take(10).ToList();
+
+            return View(data);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

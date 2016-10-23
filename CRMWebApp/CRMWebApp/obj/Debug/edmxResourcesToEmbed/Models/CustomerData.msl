@@ -51,5 +51,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="vw_CustomerContactAndBankList">
+      <EntityTypeMapping TypeName="客戶資料Model.vw_CustomerContactAndBankList">
+        <MappingFragment StoreEntitySet="vw_CustomerContactAndBankList">
+          <ScalarProperty Name="銀行數戶數量" ColumnName="銀行數戶數量" />
+          <ScalarProperty Name="聯絡人數量" ColumnName="聯絡人數量" />
+          <ScalarProperty Name="客戶名稱" ColumnName="客戶名稱" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
