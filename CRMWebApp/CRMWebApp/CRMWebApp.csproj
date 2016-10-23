@@ -227,6 +227,9 @@
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>CustomerData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\vw_CustomerContactAndBankList.cs">
+      <DependentUpon>CustomerData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\客戶聯絡人.cs">
       <DependentUpon>CustomerData.tt</DependentUpon>
     </Compile>
