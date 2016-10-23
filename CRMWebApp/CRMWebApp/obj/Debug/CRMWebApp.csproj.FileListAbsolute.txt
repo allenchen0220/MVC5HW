@@ -96,6 +96,5 @@ C:\Users\Allen\Source\Repos\MVC5HW\CRMWebApp\CRMWebApp\bin\zh-Hant\Microsoft.Owi
 C:\Users\Allen\Source\Repos\MVC5HW\CRMWebApp\CRMWebApp\bin\zh-Hant\Microsoft.Owin.Security.Google.resources.dll
 C:\Users\Allen\Source\Repos\MVC5HW\CRMWebApp\CRMWebApp\bin\zh-Hant\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\Allen\Source\Repos\MVC5HW\CRMWebApp\CRMWebApp\bin\zh-Hant\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-C:\Users\Allen\Source\Repos\MVC5HW\CRMWebApp\CRMWebApp\obj\Debug\CRMWebApp.csprojResolveAssemblyReference.cache
 C:\Users\Allen\Source\Repos\MVC5HW\CRMWebApp\CRMWebApp\obj\Debug\CRMWebApp.dll
 C:\Users\Allen\Source\Repos\MVC5HW\CRMWebApp\CRMWebApp\obj\Debug\CRMWebApp.pdb
