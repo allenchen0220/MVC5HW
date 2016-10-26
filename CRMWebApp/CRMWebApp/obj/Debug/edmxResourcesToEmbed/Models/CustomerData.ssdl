@@ -54,7 +54,7 @@
     </Key>
     <Property Name="客戶名稱" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="聯絡人數量" Type="int" />
-    <Property Name="銀行數戶數量" Type="int" />
+    <Property Name="銀行帳戶數量" Type="int" />
   </EntityType>
   <Association Name="FK_客戶銀行資訊_客戶資料">
     <End Role="客戶資料" Type="Self.客戶資料" Multiplicity="1" />
@@ -89,7 +89,7 @@
       <DefiningQuery>SELECT 
     [vw_CustomerContactAndBankList].[客戶名稱] AS [客戶名稱], 
     [vw_CustomerContactAndBankList].[聯絡人數量] AS [聯絡人數量], 
-    [vw_CustomerContactAndBankList].[銀行數戶數量] AS [銀行數戶數量]
+    [vw_CustomerContactAndBankList].[銀行帳戶數量] AS [銀行帳戶數量]
     FROM [dbo].[vw_CustomerContactAndBankList] AS [vw_CustomerContactAndBankList]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_客戶銀行資訊_客戶資料" Association="Self.FK_客戶銀行資訊_客戶資料">

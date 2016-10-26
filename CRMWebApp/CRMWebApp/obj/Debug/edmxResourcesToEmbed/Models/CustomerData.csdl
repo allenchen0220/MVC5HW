@@ -95,6 +95,6 @@
     </Key>
     <Property Name="客戶名稱" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="聯絡人數量" Type="Int32" />
-    <Property Name="銀行數戶數量" Type="Int32" />
+    <Property Name="銀行帳戶數量" Type="Int32" />
   </EntityType>
 </Schema>
