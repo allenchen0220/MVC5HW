@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CRMWebApp.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace CRMWebApp.Controllers
 {
@@ -57,13 +58,22 @@ namespace CRMWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.客戶聯絡人.Add(客戶聯絡人);
-                db.SaveChanges();
+                var email = db.usp_GetCustomEmail(客戶聯絡人.Email);
+                if (email.Count() <=0)
+                {
+                    db.客戶聯絡人.Add(客戶聯絡人);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    return new HttpStatusCodeResult(123, "同一個客戶下的聯絡人，其 Email 不能重複");
+                }
+
                 return RedirectToAction("Index");
             }
 
             ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱", 客戶聯絡人.客戶Id);
-            return View(客戶聯絡人);
+            return View(客戶聯絡人); 
         }
 
         // GET: 客戶聯絡人/Edit/5

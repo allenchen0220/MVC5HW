@@ -63,5 +63,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetCustomEmail" FunctionName="客戶資料Model.Store.usp_GetCustomEmail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="客戶資料Model.usp_GetCustomEmail_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="姓名" ColumnName="姓名" />
+          <ScalarProperty Name="職稱" ColumnName="職稱" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="手機" ColumnName="手機" />
+          <ScalarProperty Name="電話" ColumnName="電話" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

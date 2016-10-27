@@ -88,6 +88,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="usp_GetCustomEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="客戶資料ModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="客戶資料" EntityType="Self.客戶資料" Schema="dbo" store:Type="Tables" />
@@ -204,6 +207,9 @@
             <End Role="客戶聯絡人" EntitySet="客戶聯絡人" />
           </AssociationSet>
           <EntitySet Name="vw_CustomerContactAndBankList" EntityType="客戶資料Model.vw_CustomerContactAndBankList" />
+          <FunctionImport Name="usp_GetCustomEmail" ReturnType="Collection(客戶資料Model.usp_GetCustomEmail_Result)">
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="vw_CustomerContactAndBankList">
           <Key>
@@ -213,6 +219,14 @@
           <Property Name="聯絡人數量" Type="Int32" />
           <Property Name="銀行帳戶數量" Type="Int32" />
         </EntityType>
+        <ComplexType Name="usp_GetCustomEmail_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="姓名" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="職稱" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="手機" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="電話" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -281,6 +295,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetCustomEmail" FunctionName="客戶資料Model.Store.usp_GetCustomEmail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="客戶資料Model.usp_GetCustomEmail_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="姓名" ColumnName="姓名" />
+                <ScalarProperty Name="職稱" ColumnName="職稱" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="手機" ColumnName="手機" />
+                <ScalarProperty Name="電話" ColumnName="電話" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

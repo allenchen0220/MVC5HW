@@ -12,6 +12,8 @@ namespace CRMWebApp.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class 客戶資料Entities : DbContext
     {
@@ -30,5 +32,14 @@ namespace CRMWebApp.Models
         public virtual DbSet<客戶銀行資訊> 客戶銀行資訊 { get; set; }
         public virtual DbSet<客戶聯絡人> 客戶聯絡人 { get; set; }
         public virtual DbSet<vw_CustomerContactAndBankList> vw_CustomerContactAndBankList { get; set; }
+    
+        public virtual ObjectResult<usp_GetCustomEmail_Result> usp_GetCustomEmail(string email)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GetCustomEmail_Result>("usp_GetCustomEmail", emailParameter);
+        }
     }
 }

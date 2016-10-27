@@ -83,6 +83,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="usp_GetCustomEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+  </Function>
   <EntityContainer Name="客戶資料ModelStoreContainer">
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="客戶資料" EntityType="Self.客戶資料" Schema="dbo" store:Type="Tables" />
