@@ -16,18 +16,18 @@ namespace CRMWebApp.Models
         [Required]
         public int 客戶Id { get; set; }
         
-        [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
+        [StringLength(50, ErrorMessage = "{0} 欄位長度必須為{2} ~ {1} 個字元!", MinimumLength = 2)]
         [Required]
         public string 銀行名稱 { get; set; }
         [Required]
         public int 銀行代碼 { get; set; }
         public Nullable<int> 分行代碼 { get; set; }
         
-        [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
+        [StringLength(50, ErrorMessage = "{0} 欄位長度必須為{2} ~ {1} 個字元!", MinimumLength = 2)]
         [Required]
         public string 帳戶名稱 { get; set; }
         
-        [StringLength(20, ErrorMessage="欄位長度不得大於 20 個字元")]
+        [StringLength(20, ErrorMessage = "{0} 欄位長度必須為{2} ~ {1} 個字元!", MinimumLength = 2)]
         [Required]
         public string 帳戶號碼 { get; set; }
         [Required]

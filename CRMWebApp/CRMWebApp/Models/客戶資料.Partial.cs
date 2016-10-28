@@ -14,25 +14,25 @@ namespace CRMWebApp.Models
         [Required]
         public int Id { get; set; }
         
-        [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
+        [StringLength(50, ErrorMessage = "{0} 欄位長度必須為{2} ~ {1} 個字元!", MinimumLength = 2)]
         [Required]
         public string 客戶名稱 { get; set; }
         
-        [StringLength(8, ErrorMessage="欄位長度不得大於 8 個字元")]
+        [StringLength(8, ErrorMessage = "{0} 欄位長度必須為{2} ~ {1} 個字元!", MinimumLength = 2)]
         [Required]
         public string 統一編號 { get; set; }
         
-        [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
+        [StringLength(50, ErrorMessage = "{0} 欄位長度必須為{2} ~ {1} 個字元!", MinimumLength = 2)]
         [Required]
         public string 電話 { get; set; }
         
-        [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
+        [StringLength(50, ErrorMessage = "{0} 欄位長度必須為{2} ~ {1} 個字元!", MinimumLength = 2)]
         public string 傳真 { get; set; }
         
-        [StringLength(100, ErrorMessage="欄位長度不得大於 100 個字元")]
+        [StringLength(100, ErrorMessage = "{0} 欄位長度必須為{2} ~ {1} 個字元!", MinimumLength = 2)]
         public string 地址 { get; set; }
         
-        [StringLength(250, ErrorMessage="欄位長度不得大於 250 個字元")]
+        [StringLength(250, ErrorMessage = "{0} 欄位長度必須為{2} ~ {1} 個字元!", MinimumLength = 2)]
         [DataType(DataType.EmailAddress, ErrorMessage = "Email格式不正確.")]
         public string Email { get; set; }
         [Required]
