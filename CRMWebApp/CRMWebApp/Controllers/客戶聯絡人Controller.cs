@@ -58,16 +58,19 @@ namespace CRMWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var email = db.usp_GetCustomEmail(客戶聯絡人.Email);
-                if (email.Count() <=0)
-                {
-                    db.客戶聯絡人.Add(客戶聯絡人);
-                    db.SaveChanges();
-                }
-                else
-                {
-                    return new HttpStatusCodeResult(123, "同一個客戶下的聯絡人，其 Email 不能重複");
-                }
+                //var email = db.usp_GetCustomEmail(客戶聯絡人.Email);
+                //if (email.Count() <=0)
+                //{
+                //    db.客戶聯絡人.Add(客戶聯絡人);
+                //    db.SaveChanges();
+                //}
+                //else
+                //{
+                //    return new HttpStatusCodeResult(123, "同一個客戶下的聯絡人，其 Email 不能重複");
+                //}
+
+                db.客戶聯絡人.Add(客戶聯絡人);
+                db.SaveChanges();
 
                 return RedirectToAction("Index");
             }

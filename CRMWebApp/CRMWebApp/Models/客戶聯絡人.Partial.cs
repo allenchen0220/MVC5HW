@@ -3,10 +3,23 @@ namespace CRMWebApp.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using System.Web;
 
     [MetadataType(typeof(客戶聯絡人MetaData))]
-    public partial class 客戶聯絡人 
+    public partial class 客戶聯絡人 : IValidatableObject
     {
+        private 客戶資料Entities db = new 客戶資料Entities();
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+             
+            //throw new NotImplementedException();
+            if(db.客戶聯絡人.Where(s =>s.Email ==Email).FirstOrDefault() != null)
+            {
+                yield return new ValidationResult("同一個客戶下的聯絡人，其 Email 不能重複", new string[] { "Email" });
+            }
+        }
     }
 
     public partial class 客戶聯絡人MetaData
@@ -16,7 +29,7 @@ namespace CRMWebApp.Models
         [Required]
         public int 客戶Id { get; set; }
         
-        [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
+        [StringLength(50, ErrorMessage="{0} 欄位長度必須為{2} ~ {1} 個字元!", MinimumLength =2)]
         [Required]
         public string 職稱 { get; set; }
         
