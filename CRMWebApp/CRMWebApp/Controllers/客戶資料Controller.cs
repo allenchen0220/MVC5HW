@@ -18,7 +18,7 @@ namespace CRMWebApp.Controllers
         //private 客戶資料Entities db = new 客戶資料Entities();
 
         // GET: 客戶資料
-        public ActionResult Index(string search)
+        public ActionResult Index(string search, int? 客戶分類)
         {
             //var data = db.客戶資料.Include(p => p.客戶名稱);
 
@@ -27,8 +27,15 @@ namespace CRMWebApp.Controllers
             //    data = db.客戶資料.Where(p => p.客戶名稱.Contains(search));
             //}
 
-            var data = repo.All().Where(p => p.客戶名稱.Contains(search));
+            //var data = repo.All().Where(p => p.客戶名稱.Contains(search));
+            var data = repo.Get所有資料依據姓名查詢條件(search,10);
             data = data.OrderByDescending(p => p.客戶名稱).Take(10);
+
+            if (客戶分類.HasValue)
+                data = data.Where(p => p.客戶分類== 客戶分類);
+
+            var options = (from p in data select p.客戶分類).Distinct().OrderBy(p => p).ToList();
+            ViewBag.客戶分類 = new SelectList(options);
 
             return View(data);
         }
@@ -59,7 +66,7 @@ namespace CRMWebApp.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,客戶名稱,統一編號,電話,傳真,地址,Email,是否已刪除")] 客戶資料 客戶資料)
+        public ActionResult Create([Bind(Include = "Id,客戶名稱,統一編號,電話,傳真,地址,Email,客戶分類,是否已刪除")] 客戶資料 客戶資料)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +98,7 @@ namespace CRMWebApp.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,客戶名稱,統一編號,電話,傳真,地址,Email,是否已刪除")] 客戶資料 客戶資料)
+        public ActionResult Edit([Bind(Include = "Id,客戶名稱,統一編號,電話,傳真,地址,Email,客戶分類,是否已刪除")] 客戶資料 客戶資料)
         {
             if (ModelState.IsValid)
             {

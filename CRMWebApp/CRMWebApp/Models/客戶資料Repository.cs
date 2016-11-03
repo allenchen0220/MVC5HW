@@ -16,6 +16,10 @@ namespace CRMWebApp.Models
             return this.All().FirstOrDefault(p => p.Id == id);
         }
 
+        public IQueryable<客戶資料> Get所有資料依據姓名查詢條件(string name, int Size)
+        {
+            return this.All().Where(p => p.客戶名稱.Contains(name)).Take(Size);
+        }
         public override void Delete(客戶資料 entity)
         {
             entity.是否已刪除 = true;

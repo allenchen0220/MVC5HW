@@ -24,6 +24,7 @@
     <NavigationProperty Name="客戶銀行資訊" Relationship="Self.FK_客戶銀行資訊_客戶資料" FromRole="客戶資料" ToRole="客戶銀行資訊" />
     <NavigationProperty Name="客戶聯絡人" Relationship="Self.FK_客戶聯絡人_客戶資料" FromRole="客戶資料" ToRole="客戶聯絡人" />
     <Property Name="是否已刪除" Type="Boolean" Nullable="false" />
+    <Property Name="客戶分類" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="客戶銀行資訊">
     <Key>
