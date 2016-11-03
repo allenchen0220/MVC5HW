@@ -16,7 +16,7 @@ namespace CRMWebApp.Controllers
         private 客戶資料Entities db = new 客戶資料Entities();
 
         // GET: 客戶聯絡人
-        public ActionResult Index(string search)
+        public ActionResult Index(string search, string 職稱)
         {
             //var 客戶聯絡人 = db.客戶聯絡人.Include(客 => 客.客戶資料);
             //return View(客戶聯絡人.ToList());
@@ -24,6 +24,12 @@ namespace CRMWebApp.Controllers
             var 客戶聯絡人 = db.客戶聯絡人.Include(客 => 客.客戶資料);
             客戶聯絡人 = 客戶聯絡人.Where(p => p.姓名.Contains(search));
 
+            if(!string.IsNullOrEmpty(職稱))
+                客戶聯絡人 = 客戶聯絡人.Where(p => p.職稱.Contains(職稱));
+
+
+            var options = (from p in db.客戶聯絡人 select p.職稱).Distinct().OrderBy(p => p).ToList();
+            ViewBag.職稱 = new SelectList(options);
             return View(客戶聯絡人.OrderByDescending(p =>p.姓名).Take(10));
         }
 

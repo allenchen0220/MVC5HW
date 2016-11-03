@@ -11,7 +11,8 @@
 </p>
 
 <form action="">
-    <input type="search" name="search" value="" />
+    @Html.TextBox("search")
+    @Html.DropDownList("職稱", "--請選擇職稱--")
     <input type="submit" value="Search" />
 </form>
 
