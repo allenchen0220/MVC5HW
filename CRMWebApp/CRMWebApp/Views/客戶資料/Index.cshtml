@@ -5,6 +5,7 @@
 }
 
 <h2>Index</h2>
+    
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -14,6 +15,8 @@
     @Html.DropDownList("客戶分類", "--請選擇客戶分類--")
     <input type="submit" value="Search" />
 </form>
+
+<h5>執行時間:@ViewData["ExecutionTime"] ms;</h5>
 
 <table class="table">
     <tr>

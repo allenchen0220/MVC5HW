@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CRMWebApp.Models;
+using CRMWebApp.ActionFilter;
 
 namespace CRMWebApp.Controllers
 {
@@ -16,7 +17,7 @@ namespace CRMWebApp.Controllers
         
 
         //private 客戶資料Entities db = new 客戶資料Entities();
-
+        [ExecutionTiming]
         // GET: 客戶資料
         public ActionResult Index(string search, int? 客戶分類)
         {
