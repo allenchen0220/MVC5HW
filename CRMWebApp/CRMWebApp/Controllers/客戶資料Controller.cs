@@ -8,9 +8,11 @@ using System.Web;
 using System.Web.Mvc;
 using CRMWebApp.Models;
 using CRMWebApp.ActionFilter;
+using System.Data.Entity.Validation;
 
 namespace CRMWebApp.Controllers
 {
+    [HandleError(ExceptionType = typeof(DbEntityValidationException), View = "Error_DbEntityValidationException")]
     public class 客戶資料Controller : Controller
     {
         客戶資料Repository repo = RepositoryHelper.Get客戶資料Repository();
